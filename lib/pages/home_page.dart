@@ -73,23 +73,40 @@ void createNewTask(){
 
   @override 
   Widget build(BuildContext context) {
+    
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 249,225,224),
-     appBar: AppBar(
-     backgroundColor: Color.fromARGB(255, 254, 173, 185),
-     title: Text("TO DO LIST"),
-     elevation: 0,
-),
+      
+       appBar:
+       AppBar(
+         title: Text("TO DO LIST"),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+       flexibleSpace: Image.asset(
+        
+       'assets/images/appbar3.jpg', 
+       // Your cute image
+       fit: BoxFit.cover,
+       ),
+       
+     ),
+
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+            image: AssetImage("assets/images/other.jpg"),
+             // 🍓 Add your image
+            fit: BoxFit.cover,
+            
+        ) ,
+  
+    
+
+   
 
 
-    //Floating button
-    floatingActionButton: FloatingActionButton(
-      onPressed: createNewTask ,
-      child: Icon(Icons.add),
-    ),
 
-
-      body: ListView.builder(
+      ),
+       child: ListView.builder(
        itemCount: db.toDoList.length,
        itemBuilder:(context, index) {
          return ToDoTile(onChanged:  (value) => checkBoxChanged(value,index),
@@ -99,6 +116,14 @@ void createNewTask(){
            );
        },
       ),
+      ),
+       //Floating button
+    floatingActionButton: FloatingActionButton(
+      onPressed: createNewTask ,
+     child: Icon(Icons.add),
+   ),
+    
     );
+    
   }
 }
